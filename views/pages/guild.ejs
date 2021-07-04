@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Mochi - Your servers</title>
+    <%- include('../templates/head') %>
+    <script src="/src/js/dashboard.js"></script>
+    <link rel="stylesheet" href="/src/css/guild.css">
+    <style>
+        a.dashboard {
+            color: var(--yellow);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../templates/header') %>
+    <div class="guild-container">
+        <div class="guild-header">
+            <img src="https://cdn.discordapp.com/icons/<%= data.guild.id %>/<%= data.guild.icon %>.webp" alt="" class="guild-header-icon">
+            <div class="guild-header-label">
+                <span class="guild-name"><%= data.guild.name %></span>
+                <span class="guild-id"><%= data.guild.id %></span>
+            </div>
+            <a href="/premium" class="premium">
+                <button class="premium-btn">Upgrade to Premium</button>
+            </a>
+        </div>
+
+        <div class="guild-dashboard">
+            <div class="dash-cat">
+                <span class="cat-title">Prefixes (<%= data.db_guild.prefix.length %>/5)</span>
+                <p class="cat-desc">Define your guild's prefixes.</p>
+                <div class="input">
+                    <input class="prefix-input" type="text" placeholder="Enter a prefix">
+                    <button id="addPrefix">Add</button>
+                </div>
+                <div class="prefixes-container">
+                    <% data.db_guild.prefix.forEach(element => { %>
+                        <div class="prefix">
+                            <span class="prefix-label"><%= element %></span>
+                            <button class="delete-prefix">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="24px" fill="var(--red)"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg>
+                            </button>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <div class="dash-cat">
+                <span class="cat-title">Nickname</span>
+                <p class="cat-desc">Change the bot's display name in this server.</p>
+                <div class="input">
+                    <input type="text" placeholder="Mochi">
+                    <button>Set</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="toaster" class="toaster"></div>
+</body>
+</html>

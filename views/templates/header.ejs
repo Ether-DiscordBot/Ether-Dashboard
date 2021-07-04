@@ -1,0 +1,42 @@
+<header>
+	<div class="header-container">
+	  <div class="header-title">
+		<a href="/">
+			<h1>MOCHI</h1>
+		</a>
+	  </div>
+	  <div class="header-nav-container">
+		<nav class="header-nav">
+		  <a href="/" class="home">Home</a>
+		  <a href="/servers" class="servers">Servers</a>
+		  <a href="" class="profile">Profile</a>
+		  <a href="" class="dashboard">Dashboard</a>
+		  <a href="" class="commands">Commands</a>
+		  <a href="" class="status">Status</a>
+		  <a href="" class="vote">Vote</a>
+		</nav>
+	  </div>
+	  <% if (data.user) { %>
+		<div class="header-user">
+			<img src="https://cdn.discordapp.com/avatars/<%= data.user.id %>/<%= data.user.avatar %>.webp?size=64" alt="discord user profile picture" class="header-user-image">
+			<span class="header-user-name">
+				<%= data.user.name %>
+			</span>
+			<img src="/src/img/drop_down_white.svg" alt="drop down arrow" class="drop-down-arrow">
+			<div class="header-user-dropdown">
+				<a href="/servers">My Servers</a>
+				<a href="">My Profile</a>
+				<a href="/logout" class="logout">Logout</a>
+			</div>
+		</div>
+	  <% } else { %>
+		<div class="header-login">
+			<a href="https://discord.com/api/oauth2/authorize?client_id=693456698299383829&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&response_type=code&scope=identify%20guilds">
+				<button>
+				Login
+				</button>
+			</a>
+	  </div>
+	  <% } %> 
+	</div>
+</header>
