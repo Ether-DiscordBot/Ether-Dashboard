@@ -34,11 +34,11 @@ module.exports = (app) => {
 			var guilds = []
 			app.utils.identify(req.cookies)
 			.then((resp) => {
-				resp.guilds.forEach(function(g) { 
+				resp.guilds.forEach(function(g) {
 					if (g.permissions_new >= 137438953471) {
 						g.is_member = app.bot.guilds.cache.find(guild => guild == g.id) != undefined;
 						guilds.push(g);
-					}	
+					}
 				})
 				res.render('./pages/servers.ejs', {
 					data: {
@@ -54,7 +54,7 @@ module.exports = (app) => {
 				})
 			})
 		} else {
-			res.redirect("https://discord.com/api/oauth2/authorize?client_id=693456698299383829&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&response_type=code&scope=identify%20guilds")
+			res.redirect(app.aouth2Link)
 		}
 	})
 
@@ -85,15 +85,15 @@ module.exports = (app) => {
 				}
 			})
 		} else {
-			res.redirect("https://discord.com/api/oauth2/authorize?client_id=693456698299383829&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2F&response_type=code&scope=identify%20guilds")
+			res.redirect(app.aouth2Link)
 		}
 	})
-	
+
 	app.get('/logout', (req, res) => {
 		res.cookie("__cfduid", '', { maxAge: 0 });
 		res.redirect('/')
 	})
-	
+
 	app.get('/callback', (req, res) => {
 		app.utils.getToken(req.query.code)
 		.then(data => {
@@ -107,7 +107,7 @@ module.exports = (app) => {
 	app.get('/premium', (req, res) => {
 		res.redirect("https://www.youtube.com/watch?v=mi9QtsWyyVc");
 	})
-	
+
 	// Get file in src folder
 	app.get('/src/:type/:file', function (req, res) {res.sendFile(path.join(__dirname, `../src/${req.params.type + "/" + req.params.file}`))});
 
