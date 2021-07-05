@@ -4,10 +4,10 @@ $( document ).ready(function() {
     })
 
     $(".delete-prefix").on("click", function() {pDel(this)})
-    
+
     var pAdd = function() {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3000/api/prefix', true, null, null)
+        xhr.open('POST', 'https://z7b9cefb1-gtw.qovery.io/api/prefix', true, null, null)
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
         xhr.addEventListener("load", function() {
             const response = JSON.parse(this.responseText)
@@ -35,10 +35,10 @@ $( document ).ready(function() {
         $(elem).find(".delete-prefix").click(function() {pDel(this)})
         $(".prefix-input").val("");
     }
-    
+
     var pDel = function(elem) {
         const xhr = new XMLHttpRequest();
-        xhr.open('DELETE', 'http://localhost:3000/api/prefix', true, null, null)
+        xhr.open('DELETE', 'https://z7b9cefb1-gtw.qovery.io/api/prefix', true, null, null)
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
         xhr.addEventListener("load", function() {
             const response = JSON.parse(this.responseText)
@@ -52,7 +52,7 @@ $( document ).ready(function() {
             "guild": window.location.href.split(/[/\\?]+/)[3]
         }))
     }
-    
+
     var createToast = function(status, message) {
         const toast = $( `
             <div class="toast ${status}">
@@ -65,4 +65,3 @@ $( document ).ready(function() {
         }, 3000)
     }
 })
-
