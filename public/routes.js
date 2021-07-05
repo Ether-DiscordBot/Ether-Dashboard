@@ -101,6 +101,7 @@ module.exports = (app) => {
 				res.cookie("__cfduid", data.access_token, { maxAge: data.expires_in * 1000 });
 				res.redirect('https://z7b9cefb1-gtw.qovery.io/')
 			}
+		res.redirect('https://z7b9cefb1-gtw.qovery.io/')
 		})
 	})
 
