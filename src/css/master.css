@@ -12,6 +12,13 @@
     --black: #1e1929;
 }
 
+.preload * {
+ -webkit-transition: none !important;
+ -moz-transition: none !important;
+ -ms-transition: none !important;
+ -o-transition: none !important;
+}
+
 html, body {
     margin: 0;
     background-color: var(--primary-color);

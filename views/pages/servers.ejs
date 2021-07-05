@@ -11,10 +11,10 @@
         }
     </style>
 </head>
-<body>
+<body  class="preload">
     <%- include('../templates/header') %>
     <div class="guilds">
-        <% data.guilds.forEach(guild => { 
+        <% data.guilds.forEach(guild => {
             if (guild.permissions_new >= 137438953471) {%>
          <div class="guild">
             <img class="guild-icon" src="https://cdn.discordapp.com/icons/<%= guild.id %>/<%= guild.icon %>.webp?size=64" alt="">
