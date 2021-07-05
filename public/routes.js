@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = (app) => {
 	app.get('/', function (req, res) {
 		if (req.query.code) {
-			return res.redirect(`/callback?code=${req.query.code}`)
+			return res.redirect(`https://z7b9cefb1-gtw.qovery.io/callback?code=${req.query.code}`)
 		}
 		if (req.cookies.__cfduid) {
 			app.utils.identify(req.cookies)
@@ -81,7 +81,7 @@ module.exports = (app) => {
 						})
 					})
 				} else {
-					res.redirect('/')
+					res.redirect('https://z7b9cefb1-gtw.qovery.io/')
 				}
 			})
 		} else {
@@ -98,8 +98,8 @@ module.exports = (app) => {
 		app.utils.getToken(req.query.code)
 		.then(data => {
 			if (!data.error) {
-				res.cookie("__cfduid", data.access_token, { maxAge: data.expires_in * 1000});
-				res.redirect('/')
+				res.cookie("__cfduid", data.access_token, { maxAge: data.expires_in * 1000 });
+				res.redirect('https://z7b9cefb1-gtw.qovery.io/')
 			}
 		})
 	})
