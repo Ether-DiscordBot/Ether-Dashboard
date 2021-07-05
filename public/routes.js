@@ -81,7 +81,7 @@ module.exports = (app) => {
 						})
 					})
 				} else {
-					res.redirect('https://z7b9cefb1-gtw.qovery.io/')
+					res.redirect('/')
 				}
 			})
 		} else {
@@ -99,9 +99,10 @@ module.exports = (app) => {
 		.then(data => {
 			if (!data.error) {
 				res.cookie("__cfduid", data.access_token, { maxAge: data.expires_in * 1000 });
-				res.redirect('https://z7b9cefb1-gtw.qovery.io/')
+				res.redirect('/')
 			}
-		res.redirect('https://z7b9cefb1-gtw.qovery.io/')
+			res.send(data.error)
+			res.redirect('/')
 		})
 	})
 
