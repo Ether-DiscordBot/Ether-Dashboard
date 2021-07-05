@@ -7,11 +7,11 @@ module.exports = (app) => {
                 client_id: process.env.CLIENT_ID,
                 client_secret: process.env.CLIENT_SECRET,
                 grant_type: 'authorization_code',
-                redirect_uri: `http://localhost:${process.env.PORT}/`,
+                redirect_uri: `https://z7b9cefb1-gtw.qovery.io/`,
                 code: code,
                 scope: 'identify guilds',
               };
-          
+
               let request = fetch('https://discord.com/api/oauth2/token', {
                 method: 'POST',
                 body: new URLSearchParams(data),
@@ -21,7 +21,7 @@ module.exports = (app) => {
               })
               return request.then(res => res.json())
         },
-    
+
         identify: (cookies) => {
             if (cookies) {
                 const url = `https://discord.com/api/users/@me`;
