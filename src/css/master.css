@@ -54,6 +54,7 @@ button {
     flex-flow: column wrap;
     padding: 20px;
     justify-content: space-around;
+    z-index: 999;
 }
 
 .toast.success {
