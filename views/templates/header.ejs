@@ -38,5 +38,19 @@
 			</a>
 	  </div>
 	  <% } %>
+	  <div class="fa-icon" onclick="dropdowMenu()">
+		  <i class="fa fa-bars"></i>
+	  </div>
 	</div>
 </header>
+
+<script>
+	function dropdowMenu() {
+		var x = document.getElementsByClassName("header-nav-container")[0];
+		if (x.className === "header-nav-container") {
+		  x.className += " responsive";
+		} else {
+		  x.className = "header-nav-container";
+		}
+	  }
+</script>
