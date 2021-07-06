@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = (app) => {
 	app.get('/', function (req, res) {
 		if (req.query.code) {
-			return res.redirect(`https://z7b9cefb1-gtw.qovery.io/callback?code=${req.query.code}`)
+			res.redirect(`https://z7b9cefb1-gtw.qovery.io/callback?code=${req.query.code}`)
+			return
 		}
 		if (req.cookies.__cfduid) {
 			app.utils.identify(req.cookies)
@@ -100,8 +101,9 @@ module.exports = (app) => {
 			if (!data.error) {
 				res.cookie("__cfduid", data.access_token, { maxAge: data.expires_in * 1000 });
 				res.redirect('/')
+			} else {
+				res.send(data)
 			}
-			res.send(data)
 		})
 	})
 
