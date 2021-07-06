@@ -130,6 +130,7 @@ a.logout {
         right: 0;
         top: 75px;
         background-color: var(--secondary-color);
+        margin: 0;
     }
 
     .header-nav-container.responsive a {
