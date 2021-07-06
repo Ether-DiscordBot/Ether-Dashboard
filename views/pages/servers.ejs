@@ -26,7 +26,7 @@
             <% } %>
             <% if (guild.is_member) { %>
             <a href="/guild/<%= guild.id %>">
-                <button>Go to dashboard</button>
+                <button class="go-to-dashboard">Go to dashboard</button>
             </a>
             <% } else { %>
                 <a href="https://discord.com/api/oauth2/authorize?client_id=693456698299383829&permissions=8&scope=bot&guild_id=<%= guild.id %>" target="_blank">

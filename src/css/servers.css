@@ -54,3 +54,14 @@
 .owner-icon path {
     color: var(--gold);
 }
+
+@media screen and (max-width: 640px) {
+    .header-login, .header-user {display: none;}
+    .owner-icon {display: none;}
+}
+
+@media screen and (max-width: 1007px) {
+    .guild {
+        padding: 13px 0;
+    }
+}

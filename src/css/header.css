@@ -102,13 +102,22 @@ a.logout {
 }
 
 @media screen and (max-width: 640px) {
-    .header-login {display: none;}
+    .header-login, .header-user {display: none;}
+    header {
+        padding: 0; 
+    }
+    .header-container {
+        justify-content: center;
+    }
+    .header-container > * {
+        margin: 10px;
+    }
 }
 
 @media screen and (max-width: 1007px) {
     .header-nav-container {display: none;}
     .header-login, .header-user {
-        margin: 0 0 0 auto;
+        margin: 0 10px 0 auto;
     }
     .header-title {
         justify-content: left;
