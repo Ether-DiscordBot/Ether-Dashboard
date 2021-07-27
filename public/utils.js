@@ -7,7 +7,7 @@ module.exports = (app) => {
                 client_id: process.env.CLIENT_ID,
                 client_secret: process.env.CLIENT_SECRET,
                 grant_type: 'authorization_code',
-                redirect_uri: `https://z7b9cefb1-gtw.qovery.io/`,
+                redirect_uri: app.redirect_uri,
                 code: code,
                 scope: 'identify guilds',
               };

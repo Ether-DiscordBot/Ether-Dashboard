@@ -1,13 +1,13 @@
+const { resolveMx } = require('dns');
 const path = require('path');
 
 module.exports = (app) => {
 	app.get('/', function (req, res) {
 		if (req.query.code) {
-			res.redirect(`https://z7b9cefb1-gtw.qovery.io/callback?code=${req.query.code}`)
-			return
+			return res.redirect('/callback?code=' + req.query.code)
 		}
 		if (req.cookies.__cfduid) {
-			app.utils.identify(req.cookies)
+			return app.utils.identify(req.cookies)
 			.then((resp) => {
 				res.render('./pages/index.ejs', {
 					data: {
@@ -22,7 +22,7 @@ module.exports = (app) => {
 				})
 			})
 		} else {
-			res.render('./pages/index.ejs', {
+			return res.render('./pages/index.ejs', {
 				data: {
 					current: "index",
 				}
@@ -95,20 +95,21 @@ module.exports = (app) => {
 		res.redirect('/')
 	})
 
+	app.get('/premium', (req, res) => {
+		res.redirect("https://www.youtube.com/watch?v=mi9QtsWyyVc");
+	})
+
 	app.get('/callback', (req, res) => {
 		app.utils.getToken(req.query.code)
 		.then(data => {
 			if (!data.error) {
 				res.cookie("__cfduid", data.access_token, { maxAge: data.expires_in * 1000 });
-				res.redirect('/')
+				res.redirect("/")
 			} else {
 				res.send(data)
 			}
 		})
-	})
-
-	app.get('/premium', (req, res) => {
-		res.redirect("https://www.youtube.com/watch?v=mi9QtsWyyVc");
+		return
 	})
 
 	// Get file in src folder
