@@ -32,7 +32,7 @@ module.exports = (app) => {
 
 	app.get('/servers', function (req, res) {
 		if (req.cookies.__cfduid) {
-			var guilds = []
+			let guilds = []
 			app.utils.identify(req.cookies)
 			.then((resp) => {
 				resp.guilds.forEach(function(g) {
@@ -43,6 +43,9 @@ module.exports = (app) => {
 				})
 				res.render('./pages/servers.ejs', {
 					data: {
+						client: {
+							id: app.client_id
+						},
 						user: {
 							current: "servers",
 							name: resp.username,

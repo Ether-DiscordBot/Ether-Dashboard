@@ -28,6 +28,8 @@ app.use(bodyParser.raw());
 app.bot = new Discord.Client();
 app.db = new mongoose.db(app)
 
+app.client_id = process.env.CLIENT_ID
+
 app.aouth2Link = process.env.AOUTH2_LINK
 app.redirect_uri = process.env.REDIRECT_URI
 
