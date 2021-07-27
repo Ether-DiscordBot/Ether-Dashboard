@@ -11,6 +11,7 @@ module.exports = (app) => {
 			.then((resp) => {
 				res.render('./pages/index.ejs', {
 					data: {
+						aouth2Link: app.aouth2Link,
 						current: "index",
 						user: {
 							name: resp.username,
@@ -24,6 +25,7 @@ module.exports = (app) => {
 		} else {
 			return res.render('./pages/index.ejs', {
 				data: {
+					aouth2Link: app.aouth2Link,
 					current: "index",
 				}
 			})
@@ -43,9 +45,8 @@ module.exports = (app) => {
 				})
 				res.render('./pages/servers.ejs', {
 					data: {
-						client: {
-							id: app.client_id
-						},
+						clientId: app.client_id,
+						aouth2Link: app.aouth2Link,
 						user: {
 							current: "servers",
 							name: resp.username,
@@ -73,6 +74,7 @@ module.exports = (app) => {
 					.then(dbGuild => {
 						res.render('./pages/guild.ejs', {
 							data: {
+								aouth2Link: app.aouth2Link,
 								user: {
 									current: "servers",
 									name: resp.username,
