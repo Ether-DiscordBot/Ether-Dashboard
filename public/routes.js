@@ -36,7 +36,7 @@ module.exports = (app) => {
 			app.utils.identify(req.cookies)
 			.then((resp) => {
 				resp.guilds.forEach(function(g) {
-					if (g.permissions_new >= 137438953471) {
+					if (g.permissions_new >= 274877906943) {
 						g.is_member = app.bot.guilds.cache.find(guild => guild == g.id) != undefined;
 						guilds.push(g);
 					}
@@ -63,7 +63,8 @@ module.exports = (app) => {
 			if (req.cookies.__cfduid) {
 			app.utils.identify(req.cookies)
 			.then((resp) => {
-				let guild = resp.guilds.find(g => g.id == req.params.id && g.permissions_new >= 137438953471)
+				console.log(resp)
+				let guild = resp.guilds.find(g => g.id == req.params.id && g.permissions_new >= 274877906943)
 				if (guild) {
 					app.db.getGuild(guild.id)
 					.then(dbGuild => {
