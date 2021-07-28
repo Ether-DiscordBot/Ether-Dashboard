@@ -67,7 +67,7 @@ module.exports = (app) => {
 			if (req.cookies.__cfduid) {
 			app.utils.identify(req.cookies)
 			.then((resp) => {
-				console.log(resp)
+				if (resp.guilds.message) {return}
 				let guild = resp.guilds.find(g => g.id == req.params.id && g.permissions_new >= 274877906943)
 				if (guild) {
 					app.db.getGuild(guild.id)

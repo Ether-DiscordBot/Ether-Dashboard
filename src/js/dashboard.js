@@ -7,7 +7,7 @@ $( document ).ready(function() {
 
     var pAdd = function() {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://z7b9cefb1-gtw.qovery.io/api/prefix', true, null, null)
+        xhr.open('POST', `${document.location.origin}/api/prefix`, true, null, null)
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
         xhr.addEventListener("load", function() {
             const response = JSON.parse(this.responseText)
@@ -38,7 +38,7 @@ $( document ).ready(function() {
 
     var pDel = function(elem) {
         const xhr = new XMLHttpRequest();
-        xhr.open('DELETE', 'https://z7b9cefb1-gtw.qovery.io/api/prefix', true, null, null)
+        xhr.open('DELETE', `${document.location.origin}/api/prefix`, true, null, null)
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
         xhr.addEventListener("load", function() {
             const response = JSON.parse(this.responseText)

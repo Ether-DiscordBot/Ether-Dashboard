@@ -1,6 +1,7 @@
 module.exports = (app) => {
     app.route('/api/prefix')
         .post(function (req, res) {
+            console.log("prefix api requested !")
             if (req.headers.cookie) {
                 const userToken = req.cookies.__cfduid;
                 const cookies = req.headers.cookie.split(/[;\s=]+/)
