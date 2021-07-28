@@ -1,7 +1,6 @@
 module.exports = (app) => {
     app.route('/api/prefix')
         .post(function (req, res) {
-            console.log("prefix api requested !")
             if (req.headers.cookie) {
                 const userToken = req.cookies.__cfduid;
                 const cookies = req.headers.cookie.split(/[;\s=]+/)
@@ -14,15 +13,18 @@ module.exports = (app) => {
                     } else if (guildId) {
                         app.db.getGuild(guildId)
                         .then(guild => {
-                            app.db.addPrefix(guildId, prefix)
-                            if (guild) {
-                                app.db.del
-                                res.status(200).send({"status": "success", "message": "Prefix successfuly removed!"})
-                                res.end();
+                            if (guild.prefix.length < 5) {
+                                app.db.addPrefix(guildId, prefix)
+                                if (guild) {
+                                    app.db.del
+                                    res.status(200).send({"status": "success", "message": "Prefix successfuly added!"})
+                                    res.end();
+                                }
                             } else {
-                                res.status(400).send({"status": "success", "message": "Prefix successfuly removed!"})
+                                res.status(401).send({"status": "error", "message": "Limit reached!"})
                                 res.end();
                             }
+                            res.status()
                         })
                     } else {
                         res.status(400).send({"status": "error", "message": "Missing argument."})
@@ -59,6 +61,34 @@ module.exports = (app) => {
                                 res.status(400).send({"status": "success", "message": "Prefix successfuly removed!"})
                                 res.end();
                             }
+                        })
+                    } else {
+                        res.status(400).send({"status": "error", "message": "Missing argument."})
+                        res.end();
+                    }
+                } else {
+                    res.status(401).send({"status": "error", "message": "Invalid token!" })
+                    res.end();
+                }
+            } else {
+                res.status(401).send({"status": "error", "message": "Expired session!"})
+                res.end();
+            }
+        })
+        .get(function (req, res) {
+            if (req.headers.cookie) {
+                const userToken = req.cookies.__cfduid;
+                const cookies = req.headers.cookie.split(/[;\s=]+/)
+                if (cookies[cookies.indexOf("__cfduid")+1] == userToken) {
+                    const guildId = req.query.guild;
+                    if (guildId) {
+                        app.db.getGuild(guildId)
+                        .then(guild => {
+                            if (guild) {
+                                res.status(200).send({"status": "success", "prefixes": guild.prefix})
+                                res.end();
+                            }
+                            res.end();
                         })
                     } else {
                         res.status(400).send({"status": "error", "message": "Missing argument."})
