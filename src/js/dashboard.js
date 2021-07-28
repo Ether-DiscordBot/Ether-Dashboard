@@ -1,18 +1,20 @@
 $( document ).ready(function() {
     $("#addPrefix").on("click", function(e) {
-        return pAdd();
+        pAdd();
+        return
     })
 
     $(".delete-prefix").on("click", function() {pDel(this)})
 
     var pAdd = function() {
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'https://z7b9cefb1-gtw.qovery.io/api/prefix', true, null, null)
+        xhr.open('POST', `${document.location.origin}/api/prefix`, true, null, null)
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
         xhr.addEventListener("load", function() {
             const response = JSON.parse(this.responseText)
             if (response.status == "success") {
                 createPrefixContainer($(".prefix-input").val())
+                updatePrefixTitle()
             }
             return createToast(response.status, response.message)
         });
@@ -38,12 +40,13 @@ $( document ).ready(function() {
 
     var pDel = function(elem) {
         const xhr = new XMLHttpRequest();
-        xhr.open('DELETE', 'https://z7b9cefb1-gtw.qovery.io/api/prefix', true, null, null)
+        xhr.open('DELETE', `${document.location.origin}/api/prefix`, true, null, null)
         xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
         xhr.addEventListener("load", function() {
             const response = JSON.parse(this.responseText)
             if (response.status == "success") {
                 $(elem).parent().remove();
+                updatePrefixTitle()
             }
             return createToast(response.status, response.message)
         });
@@ -63,5 +66,17 @@ $( document ).ready(function() {
         setTimeout(function() {
             $( toast ).hide()
         }, 3000)
+    }
+
+    var updatePrefixTitle = function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `${document.location.origin}/api/prefix?guild=${window.location.href.split(/[/\\?]+/)[3]}`, true, null, null)
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
+        xhr.addEventListener("load", function() {
+            const response = JSON.parse(this.responseText)
+            const prefixesCount = response.prefixes.length
+            $(".cat-title").text(`Prefixes (${prefixesCount}/5)`)
+        });
+        xhr.send()
     }
 })
