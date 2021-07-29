@@ -14,7 +14,7 @@ $( document ).ready(function() {
             const response = JSON.parse(this.responseText)
             if (response.status == "success") {
                 createPrefixContainer($(".prefix-input").val())
-                updatePrefixTitle()
+                updatePrefixTitle(response.prefixes.length+1)
             }
             return createToast(response.status, response.message)
         });
@@ -46,7 +46,7 @@ $( document ).ready(function() {
             const response = JSON.parse(this.responseText)
             if (response.status == "success") {
                 $(elem).parent().remove();
-                updatePrefixTitle()
+                updatePrefixTitle(response.prefixes.length-1)
             }
             return createToast(response.status, response.message)
         });
@@ -68,15 +68,7 @@ $( document ).ready(function() {
         }, 3000)
     }
 
-    var updatePrefixTitle = function () {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `${document.location.origin}/api/prefix?guild=${window.location.href.split(/[/\\?]+/)[3]}`, true, null, null)
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
-        xhr.addEventListener("load", function() {
-            const response = JSON.parse(this.responseText)
-            const prefixesCount = response.prefixes.length
-            $(".cat-title").text(`Prefixes (${prefixesCount}/5)`)
-        });
-        xhr.send()
+    var updatePrefixTitle = function (prefixesCount) {
+        $("#prefix").find(".cat-title").text(`Prefixes (${prefixesCount}/5)`)
     }
 })
