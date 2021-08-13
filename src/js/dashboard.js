@@ -10,23 +10,27 @@ $( document ).ready(function() {
     })
 
     $(".delete-prefix").on("click", function() {pDel(this)})
-
-    const pAdd = function() {
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', `${document.location.origin}/api/prefix`, true, null, null)
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
-        xhr.addEventListener("load", function() {
-            const response = JSON.parse(this.responseText)
-            if (response.status == "success") {
-                createPrefixContainer($(".prefix-input").val())
-                updatePrefixTitle(response.prefixes.length+1)
-            }
-            return createToast(response.status, response.message)
-        });
-        xhr.send(JSON.stringify({
-            "prefix": $(".prefix-input").val(),
-            "guild": window.location.href.split(/[/\\?]+/)[3]
-        }))
+  
+    var pAdd = function() { 
+        const request = fetch(`${document.location.origin}/api/prefix`, {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json; charset=utf-8'
+            }),
+            body: JSON.stringify({
+                "prefix": $(".prefix-input").val(),
+                "guild": window.location.href.split(/[/\\?]+/)[3]
+            })
+        })
+        .then(function(response) {
+            response.json().then(function(data) {
+                if (response.ok) {
+                    createPrefixContainer($(".prefix-input").val())
+                    updatePrefixTitle(data.prefixes.length+1)
+                }
+                createToast(data.status, data.message)
+            })
+        })
     }
 
     const createPrefixContainer = function(prefix) {
@@ -42,23 +46,27 @@ $( document ).ready(function() {
         $(elem).find(".delete-prefix").click(function() {pDel(this)})
         $(".prefix-input").val("");
     }
-
-    const pDel = function(elem) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('DELETE', `${document.location.origin}/api/prefix`, true, null, null)
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
-        xhr.addEventListener("load", function() {
-            const response = JSON.parse(this.responseText)
-            if (response.status == "success") {
-                $(elem).parent().remove();
-                updatePrefixTitle(response.prefixes.length-1)
-            }
-            return createToast(response.status, response.message)
-        });
-        xhr.send(JSON.stringify({
-            "prefix": $(elem).parent().index(),
-            "guild": window.location.href.split(/[/\\?]+/)[3]
-        }))
+    
+    var pDel = function(elem) {
+        const request = fetch(`${document.location.origin}/api/prefix`, {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-Type': 'application/json; charset=utf-8'
+            }),
+            body: JSON.stringify({
+                "prefix": $(elem).parent().index(),
+                "guild": window.location.href.split(/[/\\?]+/)[3]
+            })
+        })
+        .then(function(response) {
+            response.json().then(function(data) {
+                if (response.ok) {
+                    $(elem).parent().remove();
+                    updatePrefixTitle(data.prefixes.length-1)
+                }
+                createToast(data.status, data.message)
+            })
+        })
     }
 
     const createToast = function(status, message) {
