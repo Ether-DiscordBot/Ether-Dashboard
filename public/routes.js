@@ -75,6 +75,7 @@ module.exports = (app) => {
 						res.render('./pages/guild.ejs', {
 							data: {
 								aouth2Link: app.aouth2Link,
+								botNickname: app.bot.guilds.cache.find(guild => guild == guild.id).me.nickname || app.bot.user.username,
 								user: {
 									current: "servers",
 									name: resp.username,
