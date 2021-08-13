@@ -1,11 +1,16 @@
 $( document ).ready(function() {
     $("#addPrefix").on("click", function(e) {
         pAdd();
-        return
+        return;
+    })
+
+    $(".changeNickname").on('click', function(e) {
+        changeNickname();
+        return;
     })
 
     $(".delete-prefix").on("click", function() {pDel(this)})
-
+  
     var pAdd = function() { 
         const request = fetch(`${document.location.origin}/api/prefix`, {
             method: 'POST',
@@ -28,7 +33,7 @@ $( document ).ready(function() {
         })
     }
 
-    var createPrefixContainer = function(prefix) {
+    const createPrefixContainer = function(prefix) {
         const elem = $(`
             <div class="prefix">
                 <span class="prefix-label">${prefix}</span>
@@ -41,7 +46,7 @@ $( document ).ready(function() {
         $(elem).find(".delete-prefix").click(function() {pDel(this)})
         $(".prefix-input").val("");
     }
-
+    
     var pDel = function(elem) {
         const request = fetch(`${document.location.origin}/api/prefix`, {
             method: 'DELETE',
@@ -64,7 +69,7 @@ $( document ).ready(function() {
         })
     }
 
-    var createToast = function(status, message) {
+    const createToast = function(status, message) {
         const toast = $( `
             <div class="toast ${status}">
                 <span class="toast-label">${message}</span>
@@ -76,7 +81,31 @@ $( document ).ready(function() {
         }, 3000)
     }
 
-    var updatePrefixTitle = function (prefixesCount) {
+    const updatePrefixTitle = function (prefixesCount) {
         $("#prefix").find(".cat-title").text(`Prefixes (${prefixesCount}/5)`)
+    }
+
+    const changeNickname = function (elem) {
+        const newNickname = $("#nickname").val();
+
+        fetch('/api/nickname', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify({
+                'nickname': newNickname,
+                'guild': window.location.href.split(/[/\\?]+/)[3]
+            })
+        })
+        .then(response => response.json())
+        .then((data) => {
+            if (data.status == "success") {
+                $('#nickname').attr('placeholder', data.nickname)
+                $('#nickname').val("")
+            }
+            return createToast(data.status, data.message)
+        })
+        
     }
 })
