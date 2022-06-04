@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
+    <script src="{% static 'js/header-scroll.js' %>"></script>
+    <title>Ether - Discord Bot</title>
+</head>
+<body class="noise">
+    <header id="main" class="noise">
+        <div class="header">
+            <div class="header-nav">
+                <h1>Ether</h1>
+                <ul class="menu">
+                    <li><a href="">Commands</a></li>
+                    <li><a href="">Invite</a></li>
+                    <li><a href="">Dashboard</a></li>
+                </ul>
+            </div>
+            <button class="login">
+                Login
+            </button>
+        </div>
+    </header>
+    <div class="header-fixed-spacer"></div>
+    <section id="ether-banner">
+        <div class="content"></div>
+    </section>
+    <section id="presentations">
+        <div class="title">
+            <h1>Why Ether ?</h1>
+            <hr>
+        </div>
+        <div class="presentations-container">
+            {% for p in presentations %}
+                <div class="presentation-row">
+                    <div>
+                        <h2>{{ p.title }}</h2>
+                        <p>{{ p.content }}</p>
+                    </div>
+                    <img class="presentation-image" src="{% static 'assets/sample_image.jpg' %}" alt="" srcset="">
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>

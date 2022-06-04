@@ -33,5 +33,8 @@ Dashboard for [Ether discord bot](https://github.com/holy-tanuki/Ether-Bot).
 ### Run Ether Dashboard
 
 ```
-(.env) ...> manage.py startserver
+(.env) ...> cd src
+```
+```
+(.env) ...> manage.py runserver
 ```
