@@ -7,7 +7,7 @@ Dashboard for Mochi discord bot
 
 - On Windows: \
     ```> python -m venv .env``` \
-    ```> .env/Scripts/activate``` \
+    ```> .env/Scripts/activate```
 
 ### Install all dependencies
 
