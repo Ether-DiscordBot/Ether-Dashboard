@@ -1,5 +1,5 @@
-# Mochi-Dashboard
-Dashboard for [Mochi discord bot](https://github.com/holy-tanuki/Ether-Bot).
+# Ether-Dashboard
+Dashboard for [Ether discord bot](https://github.com/holy-tanuki/Ether-Bot).
 
 ## Installation
 
@@ -7,18 +7,31 @@ Dashboard for [Mochi discord bot](https://github.com/holy-tanuki/Ether-Bot).
 
 - On Windows:
   ```
-  > python -m venv .env
+  ...> python -m venv .env
   ``` 
   ```
-  > .env/Scripts/activate
+  ...> .env/Scripts/activate
+  ```
+
+- On Linux and MacOS:
+  ```
+  ...> python3 -m venv .env
+  ```
+  ```
+  ...> source .env/Scripts/activate
   ```
 
 ### Install all dependencies
 
-- On Windows:
-  ```
-  (.env) > python -m pip install --upgrade pip
-  ``` 
-  ```
-  (.env) > python -r pip install -r requirements.txt
-  ```
+```
+(.env) ...> pip install --upgrade pip
+``` 
+```
+(.env) ...> pip install -r requirements.txt
+```
+
+### Run Ether Dashboard
+
+```
+(.env) ...> manage.py startserver
+```
