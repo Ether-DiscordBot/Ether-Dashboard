@@ -1,16 +1,24 @@
 # Mochi-Dashboard
-Dashboard for Mochi discord bot
+Dashboard for [Mochi discord bot](https://github.com/holy-tanuki/Ether-Bot).
 
 ## Installation
 
-### Setup the virtual environement
+### Setup and activate the virtual environement
 
-- On Windows: \
-    ```> python -m venv .env``` \
-    ```> .env/Scripts/activate```
+- On Windows:
+  ```
+  > python -m venv .env
+  ``` 
+  ```
+  > .env/Scripts/activate
+  ```
 
 ### Install all dependencies
 
-- On Windows: \
-    ```(.env) > python -m pip install --upgrade pip``` \
-    ```(.env) > python -r pip install -r requirements.txt```
+- On Windows:
+  ```
+  (.env) > python -m pip install --upgrade pip
+  ``` 
+  ```
+  (.env) > python -r pip install -r requirements.txt
+  ```
