@@ -10,7 +10,7 @@ Dashboard for [Ether discord bot](https://github.com/holy-tanuki/Ether-Bot).
   ...> python -m venv .env
   ``` 
   ```
-  ...> .env/Scripts/activate
+  ...> call .env/Scripts/activate
   ```
 
 - On Linux and MacOS:
