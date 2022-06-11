@@ -13,11 +13,13 @@
     <header id="main" class="noise">
         <div class="header">
             <div class="header-nav">
-                <h1>Ether</h1>
+                <a href="/">
+                    <h1>Ether</h1>
+                </a>
                 <ul class="menu">
                     <li><a href="">Commands</a></li>
                     <li><a href="">Invite</a></li>
-                    <li><a href="dashboard/">Dashboard</a></li>
+                    <li><a href="/dashboard">Dashboard</a></li>
                 </ul>
             </div>
             <button class="login">
@@ -29,7 +31,22 @@
 
     <div class="guild-picker">
         <h1 class="guild-picker-title">Select a server</h1>
-        <div class="guilds"></div>
+        <div class="guilds">
+            {% for guild in guilds %}
+                <div class="guild-card noise">
+                    <div class="guild-card-top">
+                        {% if guild.icon %}
+                            <img class="guild-icon" src="https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}.png" alt="guild icon">
+                        {% else %}
+                            <div class="guild-icon none-icon"></div>
+                        {% endif %}
+                        <h1>{{ guild.name }}</h1>
+                    </div>
+
+                    <button class="guild-btn btn-setup">Setup</button>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </body>
 </html>

@@ -81,4 +81,5 @@ button.login {
     border: 3px solid var(--light);
     font-weight: 400;
     border-radius: 30px;
+    cursor: pointer;
 }
