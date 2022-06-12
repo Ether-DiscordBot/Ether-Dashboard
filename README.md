@@ -36,5 +36,5 @@ Dashboard for [Ether discord bot](https://github.com/holy-tanuki/Ether-Bot).
 (.env) ...> cd src
 ```
 ```
-(.env) ...> python manage.py runserver
+(.env) ...> uvicorn --reload EtherDashboard.asgi:application
 ```

@@ -1,14 +1,24 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from oauth2.functions import get_access_token, get_user, get_guilds
+from oauth2.db.client import Database
 
 min_permission = 4398046511103
 
-def guild_list(request):
+
+async def guild_list(request):
     token = get_access_token(request)
-    guilds = get_guilds(token)
+    all_guilds = get_guilds(token)
+    guilds = [g for g in all_guilds if int(g['permissions']) >= min_permission]
+    
+    for guild in guilds:
+        db_guilds = await Database.Guild.get_or_none(int(guild['id']))
+        
+        if db_guilds:
+            guild['setup'] = True
+
     context = {
-        "guilds": [g for g in guilds if int(g['permissions']) >= min_permission]
+        "guilds": guilds
     }
     return render(request, "dashboard/index.html", context=context)
 

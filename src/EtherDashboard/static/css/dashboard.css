@@ -70,5 +70,12 @@ html, body {
     border-radius: 10px;
     border: none;
     cursor: pointer;
+}
+
+.btn-setup {
     background-color: #E7E4DC;
+}
+
+.btn-open {
+    background-color: #EBBA8E;
 }
