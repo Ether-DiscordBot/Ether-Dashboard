@@ -84,3 +84,42 @@ button.login {
     border-radius: 30px;
     cursor: pointer;
 }
+
+.nav-bar-user {
+    width: 200px;
+    height: 40px;
+    color: var(--white);
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.nav-bar-user .user-avatar {
+    height: 40px; width: 40px;
+    border-radius: 50%;
+}
+
+.nav-bar-usertext {
+    display: flex;
+    flex-flow: column;
+}
+
+.nav-bar-username {
+    width: fit-content; height: fit-content;
+    font-weight: 700;
+}
+
+.nav-bar-userdisc {
+    width: fit-content; height: fit-content;
+    font-weight: 900;
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.nav-bar-dropdown {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0 10px;
+}

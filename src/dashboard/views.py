@@ -1,11 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from asgiref.sync import async_to_sync
+
 from oauth2.functions import get_access_token, get_user, get_guilds
 from oauth2.db.client import Database
 
 min_permission = 4398046511103
 
-
+@async_to_sync
 async def guild_list(request):
     token = get_access_token(request)
     all_guilds = get_guilds(token)
@@ -16,8 +18,17 @@ async def guild_list(request):
         
         if db_guilds:
             guild['setup'] = True
+            
+    if not token:
+        user_context = {
+            'connected': False
+        }
+    else:
+        user_context = get_user(token)
+        user_context['connected'] = True
 
     context = {
+        "user": user_context,
         "guilds": guilds
     }
     return render(request, "dashboard/index.html", context=context)
