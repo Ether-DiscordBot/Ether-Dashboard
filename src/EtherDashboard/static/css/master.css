@@ -8,7 +8,7 @@
 }
 
 *.noise {
-    background-image: url("../assets/noise_texture.png");
+    background-image: url("../assets/noise_texture@4x.png");
     background-repeat: repeat;
 }
 
