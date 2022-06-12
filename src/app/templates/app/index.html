@@ -1,33 +1,7 @@
+{% extends 'app/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/master.css' %}">
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
-    <title>Ether - Discord Bot</title>
-</head>
-<body class="noise">
-    <header id="main" class="noise">
-        <div class="header">
-            <div class="header-nav">
-                <h1>Ether</h1>
-                <ul class="menu">
-                    <li><a href="">Commands</a></li>
-                    <li><a href="">Invite</a></li>
-                    <li><a href="dashboard/">Dashboard</a></li>
-                </ul>
-            </div>
-            <a href="/oauth2/login">
-                <button class="login">
-                    Login
-                </button>
-            </a>
-        </div>
-    </header>
-    <div class="header-fixed-spacer"></div>
+
+{% block content %}
     <section id="ether-banner">
         <div class="content"></div>
     </section>
@@ -76,5 +50,4 @@
             </div>
         </div>
     </footer>
-</body>
-</html>
+{% endblock %}

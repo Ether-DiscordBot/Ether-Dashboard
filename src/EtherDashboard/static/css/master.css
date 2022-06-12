@@ -9,11 +9,12 @@
 
 *.noise {
     background-image: url("../assets/noise_texture.png");
+    background-repeat: repeat;
 }
 
 html, body {
     margin: 0;
-    height: 100%;
+    min-height: 100%;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -71,7 +72,7 @@ header#main ul.menu{
 
 button.login {
     background: none;
-    width: 135px; height: 40px;
+    width: 100px; height: 40px;
     font-size: 15px;
     display: flex;
     align-items: center;
