@@ -1,4 +1,41 @@
-{% extends 'dashboard/base.html' %}
+{% load compress %}
 {% load static %}
+{% load cache %}
 
-{% block content %}{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'css/master.css' %}">
+        <link rel="stylesheet" href="{% static 'css/guild_dashboard.css' %}">
+    {% endcompress %}
+    <title>Ether | {{title}}</title>
+</head>
+<body>
+    <header id="dashboard-header" class="noise">
+    </header>
+    <div class="side-bar noise">
+        <div class="side-bar-header">
+            <a href="/">
+                <h1 class="side-bar-header-title">Ether</h1>
+            </a>
+        </div>
+        <div class="guild-picker">
+            <div class="guild-picker-content">
+                <div class="guild-picker-left">
+                    <img class="guild-picker-guild-icon" src="https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}.png" alt="">
+                    <span>{{ guild.name }}</span>
+                </div>
+                <div class="guild-picker-drop-down">
+                    <svg width="11" height="5" viewBox="0 0 11 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0L11 -2.33104e-06L5.5 5L0 0Z" fill="black"/>
+                    </svg>  
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

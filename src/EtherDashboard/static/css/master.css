@@ -49,7 +49,7 @@ header#main div.header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 45px;
 }
 
 header#main div.header-nav {
@@ -64,6 +64,7 @@ header#main ul.menu{
     justify-content: center;
     align-items: center;
     gap: 30px;
+    padding: 0 0 0 45px;
 }
 
 .header-fixed-spacer {
@@ -92,8 +93,15 @@ button.login {
     display: flex;
     flex-flow: row;
     align-items: center;
-    gap: 10px;
+    justify-content: space-between;
     cursor: pointer;
+}
+
+.nav-bar-left {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 10px;
 }
 
 .nav-bar-user .user-avatar {
@@ -122,4 +130,10 @@ button.login {
     display: flex;
     justify-content: center;
     margin: 0 0 0 10px;
+}
+
+.header-title {
+    width: 80px;
+    display: flex;
+    justify-content: center;
 }
