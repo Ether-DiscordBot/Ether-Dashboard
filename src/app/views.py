@@ -15,6 +15,7 @@ def index(request):
         user_context['connected'] = True
         
     context = {
+        "title": "The Discord Bot",
         'user': user_context,
         'presentations': Card.objects.all()
     }

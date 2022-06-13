@@ -1,5 +1,6 @@
 {% load compress %}
 {% load static %}
+{% load cache %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +12,13 @@
             <link rel="stylesheet" href="{% static 'css/master.css' %}">
             <link rel="stylesheet" href="{% static 'css/index.css' %}">
         {% endcompress %}
-        <title>Ether - Discord Bot</title>
+        <title>Ether | {{title}}</title>
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     </head>
     <body class="noise">
-    {% include 'header.html' %}
+    {% cache 500 header %}
+        {% include 'header.html' %}
+    {% endcache %}
     {% block content %}
     {% endblock %}
 </body>

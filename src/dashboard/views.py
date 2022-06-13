@@ -28,6 +28,7 @@ async def guild_list(request):
         user_context['connected'] = True
 
     context = {
+        "title": "Dashboard",
         "user": user_context,
         "guilds": guilds
     }
