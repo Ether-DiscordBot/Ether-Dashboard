@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.shortcuts import render
 from asgiref.sync import async_to_sync
 
@@ -35,4 +35,13 @@ async def guild_list(request):
     return render(request, "dashboard/index.html", context=context)
 
 def dashboard(request, guild_id):
-    return HttpResponse(f"Dashboard of the guild {guild_id}")
+    token = get_access_token(request)
+    all_guilds = get_guilds(token)
+    guilds = [g for g in all_guilds if int(g['permissions']) >= min_permission]
+    
+    for guild in guilds:
+        if int(guild['id']) == guild_id:
+            return HttpResponse(f"Dashboard of the guild {guild_id}")
+    else:
+        raise Http404("Server not found!")
+    
