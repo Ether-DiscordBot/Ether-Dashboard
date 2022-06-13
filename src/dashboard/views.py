@@ -32,16 +32,27 @@ async def guild_list(request):
         "user": user_context,
         "guilds": guilds
     }
-    return render(request, "dashboard/index.html", context=context)
+    return render(request, "dashboard/guild_list.html", context=context)
 
-def dashboard(request, guild_id):
+def guild_dashboard(request, guild_id):
     token = get_access_token(request)
     all_guilds = get_guilds(token)
     guilds = [g for g in all_guilds if int(g['permissions']) >= min_permission]
     
     for guild in guilds:
         if int(guild['id']) == guild_id:
-            return HttpResponse(f"Dashboard of the guild {guild_id}")
+            user_context = get_user(token)
+            user_context['connected'] = True
+            
+            context = {
+                "title": "Dashboard",
+                "user": user_context,
+                "guild": guild,
+                "test_function": test_function
+            }
+            return render(request, "dashboard/guild_dashboard.html", context=context)
     else:
         raise Http404("Server not found!")
-    
+
+def test_function():
+    print("Hello World!")
