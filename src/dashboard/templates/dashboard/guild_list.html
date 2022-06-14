@@ -1,0 +1,32 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="guild-picker">
+        <h1 class="guild-picker-title">Select a server</h1>
+        <div class="guilds">
+            {% for guild in guilds %}
+                <div class="guild-card noise">
+                    <div class="guild-card-top">
+                        {% if guild.icon %}
+                            <img class="guild-icon" src="https://cdn.discordapp.com/icons/{{ guild.id }}/{{ guild.icon }}.png" alt="guild icon">
+                        {% else %}
+                            <div class="guild-icon none-icon"></div>
+                        {% endif %}
+                        <h1>{{ guild.name }}</h1>
+                    </div>
+
+                    {% if guild.setup %}
+                        <a href="/dashboard/{{ guild.id }}">
+                            <button class="guild-btn btn-open">Open</button>
+                        </a>
+                    {% else %}
+                        <a href="https://discord.com/oauth2/authorize?client_id=985100792270819389&scope=bot%20applications.commands&permissions=8&guild_id={{ guild.id }}&response_type=code">
+                            <button class="guild-btn btn-setup">Setup</button>
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

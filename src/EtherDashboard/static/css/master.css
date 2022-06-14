@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --black: #000000;
+    --dark: #1d1d1d;
+    --light: #f3f0e7;
+    --white: #ffffff;
+}
+
+*.noise {
+    background-image: url("../assets/noise_texture@4x.png");
+    background-repeat: repeat;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+ul > li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0
+}
+
+header#main {
+    background-color: #000000;
+    width: 100%; height: 75px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    color: #ffffff;
+}
+
+header#main a {
+    color: #ffffff;
+}
+
+header#main div.header {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 45px;
+}
+
+header#main div.header-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+header#main ul.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 0 0 0 45px;
+}
+
+.header-fixed-spacer {
+    height: 75px;
+}
+
+button.login {
+    background: none;
+    width: 100px; height: 40px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--light);
+    border: 3px solid var(--light);
+    font-weight: 400;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.nav-bar-user {
+    width: 200px;
+    height: 40px;
+    color: var(--white);
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.nav-bar-left {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-bar-user .user-avatar {
+    height: 40px; width: 40px;
+    border-radius: 50%;
+}
+
+.nav-bar-usertext {
+    display: flex;
+    flex-flow: column;
+}
+
+.nav-bar-username {
+    width: fit-content; height: fit-content;
+    font-weight: 700;
+}
+
+.nav-bar-userdisc {
+    width: fit-content; height: fit-content;
+    font-weight: 900;
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.nav-bar-dropdown {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 0 10px;
+}
+
+.header-title {
+    width: 80px;
+    display: flex;
+    justify-content: center;
+}

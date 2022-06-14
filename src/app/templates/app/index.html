@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section id="ether-banner">
+        <div class="content"></div>
+    </section>
+    <section id="presentations">
+        <div class="title">
+            <h1>Why Ether ?</h1>
+            <hr>
+        </div>
+        <div class="presentations-container">
+            {% for p in presentations %}
+                <div class="presentation-row">
+                    <div>
+                        <h2>{{ p.title }}</h2>
+                        <p>{{ p.content }}</p>
+                    </div>
+                    <img class="presentation-image" src="{% static 'assets/sample_image.jpg' %}" alt="" srcset="">
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <footer>
+        <div class="join">
+            <h2>Invite Ether</h2>
+            <p>Personalize your server now and antirely for free !</p>
+            <button>Add to Discord</button>
+        </div>
+        <div class="footer-links">
+            <div class="columns">
+                <div>
+                    <a href="/">
+                        <h2>Ether</h2>
+                    </a>
+                </div>
+                <div class="column">
+                    <h3>Discover</h3>
+                    <hr>
+                </div>
+                <div class="column">
+                    <h3>Ether</h3>
+                    <hr>
+                </div>
+                <div class="column">
+                    <h3>Legal</h3>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}

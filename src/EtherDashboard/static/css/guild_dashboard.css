@@ -1,0 +1,65 @@
+header#dashboard-header {
+    height: 75px;
+    width: 100%;
+    background-color: var(--dark);
+}
+
+div.side-bar {
+    top: 0; bottom: 0;
+    position: fixed;
+    width: 290px;
+    background-color: var(--dark);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+div.side-bar-header {
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.side-bar-header a {
+    width: fit-content;
+    color: var(--white);
+}
+
+div.guild-picker {
+    width: 250px;
+    height: 50px;
+    background-color: var(--light);
+    margin-top: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+div.guild-picker-content {
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.guild-picker-left {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 10px;
+}
+
+img.guild-picker-guild-icon {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+}
+
+div.guild-picker-left span {
+    font-weight: 500;
+}
+
+div.guild-picker-drop-down {
+    display: flex;
+    justify-content: center;
+}

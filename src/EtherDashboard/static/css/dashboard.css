@@ -1,0 +1,81 @@
+html, body {
+    background-color: var(--light);
+}
+
+.guild-picker {
+    top: 0; bottom: 0;
+    left: 50px; right: 50px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 75px;
+}
+
+.guild-picker-title {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 58px;
+}
+
+.guilds {
+    height: 340px;
+    display: flex;
+    flex-flow: row;
+    gap: 50px;
+    max-width: 100%;
+    overflow-x: scroll;
+    float: left;
+}
+
+.guild-card {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+    min-width: 270px;
+    background-color: var(--dark);
+    color: var(--white);
+}
+
+.guild-card-top {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.guild-card .guild-icon {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+}
+
+.guild-card h1 {
+    max-width: 190px;
+    margin-top: 20px;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    float:left;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.guild-btn {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-setup {
+    background-color: #E7E4DC;
+}
+
+.btn-open {
+    background-color: #EBBA8E;
+}

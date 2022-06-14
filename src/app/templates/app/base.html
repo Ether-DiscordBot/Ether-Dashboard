@@ -1,0 +1,24 @@
+{% load compress %}
+{% load static %}
+{% load cache %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% compress css %}
+            <link rel="stylesheet" href="{% static 'css/master.css' %}">
+            <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        {% endcompress %}
+        <title>Ether | {{title}}</title>
+    </head>
+    <body class="noise">
+    {% cache 500 header %}
+        {% include 'header.html' %}
+    {% endcache %}
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,39 @@
+<header id="main" class="noise">
+    <div class="header">
+        <div class="header-nav">
+            <a href="/">
+                <h1 class="header-title">Ether</h1>
+            </a>
+            <ul class="menu">
+                <li><a href="">Commands</a></li>
+                <li><a href="">Invite</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+        {% if not user.connected %}
+            <a href="/oauth2/login">
+                <button class="login">
+                    Login
+                </button>
+            </a>
+        {% else %}
+            <div class="nav-bar-user">
+                <div class="nav-bar-left">
+                    {% if user.avatar %}
+                        <img src="https://cdn.discordapp.com/avatars/{{ user.id }}/{{ user.avatar }}.png" alt="" class="user-avatar">
+                    {% endif %}
+                    <div class="nav-bar-usertext">
+                        <span class="nav-bar-username">{{ user.username }}</span>
+                        <span class="nav-bar-userdisc">#{{user.discriminator}}</span>
+                    </div>
+                </div>
+                <div class="nav-bar-dropdown">
+                    <svg width="11" height="5" viewBox="0 0 11 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0L11 -2.33104e-06L5.5 5L0 0Z" fill="white"/>
+                    </svg>                        
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</header>
+<div class="header-fixed-spacer"></div>
