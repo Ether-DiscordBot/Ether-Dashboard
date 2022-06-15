@@ -1,3 +1,7 @@
+body {
+    background-color: var(--light);
+}
+
 header#dashboard-header {
     height: 75px;
     width: 100%;
@@ -62,4 +66,122 @@ div.guild-picker-left span {
 div.guild-picker-drop-down {
     display: flex;
     justify-content: center;
+}
+
+#dashboard {
+    margin: 0 0 0 290px;
+    padding: 50px 100px;
+}
+
+#dashboard > .name, #dashboard > .description {
+    text-transform: uppercase;
+}
+
+#dashboard > .name {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    width: fit-content;
+}
+
+#dashboard > .description {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    width: fit-content;
+    color: #6B6B6B;
+}
+
+section {
+    border: 4px solid #000000;
+}
+
+.section-title, .section-content {
+    padding: 15px;
+    display: flex;
+}
+
+section .section-title {
+    flex-flow: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 4px solid #000000;
+}
+
+.section-title h1 {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.switch {
+    position: relative;
+    width: 60px;
+    height: 34px;
+    border: 4px solid #000000;
+    border-radius: 17px;
+    appearance: none;
+    cursor: pointer;
+    display: flex;
+    flex-flow: row;
+}
+
+.switch:before {
+    display: inline-block;
+    content: "";
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    transition: ease-out 0.2s;
+    outline: 4px solid #000000;
+}
+
+input.switch:checked:before {
+    background-color: #a5d799;
+    transform: translateX(100%);
+}
+  
+input.switch:not(:checked):before {
+    background-color: #d79999;
+}
+
+.section-content {
+    flex-flow: column;
+}
+
+.section-param {
+    display: flex;
+    flex-flow: column;
+}
+
+.section-param label {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #6B6B6B;
+}
+
+
+.section-param input, .section-content select {
+    margin: 7px 0 0 30px;
+    width: 425px;
+}
+
+.section-param select {
+    height: 55px;
+    border-radius: 15px;
+    background-color: var(--dark);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    padding: 10px;
+}
+
+.section-param select span {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+    color: #6B6B6B;
 }
