@@ -15,11 +15,11 @@ def exchange_code(code: str):
         "redirect_uri": "http://127.0.0.1:8000/oauth2/redirect",
         "scope": "identify guild",
     }
-    
+
     headers = {
         "Content-Type": 'application/x-www-form-urlencoded'
     }
-    
+
     r = requests.post("https://discord.com/api/v10/oauth2/token", data=data, headers=headers)
     credentials = r.json()
 
@@ -33,17 +33,19 @@ def get_access_token(request) -> Optional[str]:
     return token
 
 def get_user(access_token):
-    r = requests.get("https://discord.com/api/v10/users/@me", headers={
-        'Authorization': 'Bearer %s' % access_token
-    })
-    
-    user = r.json()
-    return user
+    r = requests.get(
+        "https://discord.com/api/v10/users/@me",
+        headers={'Authorization': f'Bearer {access_token}'},
+    )
+
+
+    return r.json()
 
 def get_guilds(access_token):
-    r = requests.get("https://discord.com/api/v10/users/@me/guilds", headers={
-        'Authorization': 'Bearer %s' % access_token
-    })
-    
-    guild = r.json()
-    return guild
+    r = requests.get(
+        "https://discord.com/api/v10/users/@me/guilds",
+        headers={'Authorization': f'Bearer {access_token}'},
+    )
+
+
+    return r.json()
