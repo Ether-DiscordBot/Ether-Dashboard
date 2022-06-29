@@ -37,13 +37,13 @@ async def guild_dashboard(request, guild_id):
     token = get_access_token(request)
     all_guilds = get_guilds(token)
     guilds = [g for g in all_guilds if int(g['permissions']) >= min_permission]
-    
+
     for guild in guilds:
         if int(guild['id']) == guild_id:
             db_guild = await Database.Guild.get_or_create(int(guild['id']))
             user_context = get_user(token)
             user_context['connected'] = True
-            
+
             context = {
                 "title": "Dashboard",
                 "user": user_context,
@@ -52,8 +52,7 @@ async def guild_dashboard(request, guild_id):
                 "test_function": test_function
             }
             return render(request, "dashboard/guild_dashboard.html", context=context)
-    else:
-        raise Http404("Server not found!")
+    raise Http404("Server not found!")
 
 def test_function():
     print("Hello World!")
